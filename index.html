@@ -2,68 +2,41 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>AI Textanalys</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testrapport: Arting AI</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
-        textarea { width: 100%; height: 100px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; padding: 10px; box-sizing: border-box; }
-        button { width: 100%; background: #007bff; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
-        #debug { margin-top: 20px; background: #222; color: #0f0; padding: 15px; border-radius: 5px; width: 100%; max-width: 500px; font-family: monospace; font-size: 12px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: #1e293b; padding: 30px; border-radius: 12px; border: 1px solid #334155; }
+        h1 { color: #8b5cf6; border-bottom: 2px solid #8b5cf6; padding-bottom: 10px; }
+        h2 { color: #8b5cf6; margin-top: 30px; }
+        .info-box { background: rgba(139, 92, 246, 0.1); border-left: 4px solid #8b5cf6; padding: 15px; margin: 15px 0; }
+        footer { text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.8rem; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Utvärdering: Arting AI YouTube Tool</h1>
+        
+        <h2>Introduktion</h2>
+        <p>Verktyget som testats är <strong>Arting AI - Free YouTube Transcript Generator Online</strong>[cite: 1]. Syftet är att klistra in en YouTube-länk för att få fram viktiga händelser och sammanfattningar[cite: 2, 3].</p>
 
-<div class="card">
-    <h2>📝 Textanalys AI</h2>
-    <p id="status">⏳ Laddar modell...</p>
-    <div id="ui" style="display:none;">
-        <textarea id="textInput" placeholder="Skriv din text här..."></textarea>
-        <button onclick="classify()">Analysera text</button>
-        <h3 id="result">Resultat: -</h3>
+        <h2>Metod</h2>
+        <p>Jag har testat verktyget med olika typer av videor: en animerad faktavideo om första världskriget och underhållningsvideor från JLC[cite: 6, 9, 11]. Jag har även testat funktioner som sammanfattning, mind maps och AI-chat[cite: 4, 12, 14].</p>
+
+        <h2>Testresultat</h2>
+        <div class="info-box">
+            <ul>
+                <li><strong>WW1-video:</strong> Hanterade den animerade videon bra och skapade en tydlig överblick[cite: 7, 8].</li>
+                <li><strong>JLC (Svenska):</strong> Fungerade bra trots svenskt tal, men sammanfattade på engelska[cite: 11].</li>
+                <li><strong>AI Chat:</strong> Funktionen "Extract 5 key points" fungerade mycket bra[cite: 15].</li>
+                <li><strong>Begränsningar:</strong> En video kunde inte hittas, vilket visar att verktyget inte stödjer allt[cite: 10].</li>
+            </ul>
+        </div>
+
+        <h2>Utvärdering</h2>
+        <p>Detta är ett bra sätt att plugga på ifall man vill kolla på långa videor, men jag ser ingen större nytta med det utanför skolarbetet[cite: 4]. En positiv aspekt är att det verkar vara helt gratis utan token-begränsningar[cite: 5]. Funktioner som mind maps känns dock lite meningslösa jämfört med sammanfattningen[cite: 13].</p>
+
+        <footer>Publicerad via GitHub Pages - Dokumentation av AI-test</footer>
     </div>
-</div>
-
-<div id="debug"><strong>Logg:</strong><div id="log"></div></div>
-
-<script>
-    let model;
-    const logEl = document.getElementById('log');
-
-    function log(msg) { logEl.innerHTML += `> ${msg}<br>`; }
-
-    async function init() {
-        // MATCHAR DITT MAPP-NAMN: tjfs_model
-        const path = './tjfs_model/model.json';
-        log(`Hämtar från: ${path}`);
-        
-        try {
-            model = await tf.loadLayersModel(path);
-            log("✅ Modell laddad!");
-            document.getElementById('status').innerText = "✅ Klar";
-            document.getElementById('ui').style.display = "block";
-        } catch (err) {
-            log(`❌ Fel: ${err.message}`);
-        }
-    }
-
-    async function classify() {
-        const text = document.getElementById('textInput').value;
-        log(`Analyse: ${text}`);
-        
-        try {
-            // Skapar en enkel "dummy"-input för att testa att modellen körs
-            // Obs: Denna rad behöver vi justera senare för att matcha din modells input-krav
-            const input = tf.ones([1, 10]); 
-            const pred = model.predict(input);
-            const data = await pred.data();
-            document.getElementById('result').innerText = `Resultat: ${data[0].toFixed(4)}`;
-            log(`Klar! Svar: ${data[0]}`);
-        } catch (e) {
-            log(`❌ Körningsfel: ${e.message}`);
-        }
-    }
-    init();
-</script>
 </body>
 </html>
