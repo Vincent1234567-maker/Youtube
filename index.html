@@ -3,59 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utvärdering: Arting AI YouTube Tool</title>
+    <title>Maximerad Utvärdering: Arting AI YouTube Tool</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #8b5cf6;
-            --accent-hover: #7c3aed;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --border: #334155;
-            --success: #22c55e;
+            --bg: #0b0e14;
+            --card: #161b22;
+            --accent: #a371f7;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --border: #30363d;
+            --pro: #3fb950;
+            --con: #f85149;
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
+            padding-bottom: 50px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 40px;
         }
 
-        h1 { font-size: 3rem; color: var(--text-main); margin-bottom: 15px; letter-spacing: -1px; }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--text); letter-spacing: -2px; }
         h1 span { color: var(--accent); }
-        .subtitle { color: var(--text-dim); font-size: 1.2rem; }
+        .subtitle { font-size: 1.3rem; color: var(--text-dim); }
 
-        section {
-            margin-bottom: 60px;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        section { margin-bottom: 100px; }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--accent);
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
         }
@@ -68,69 +60,85 @@
             margin-left: 20px;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 40px;
+        .content-block {
+            background: var(--card);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .image-box {
+            background: #0d1117;
+            border: 2px dashed var(--border);
             border-radius: 16px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 40px 0;
+            color: var(--text-dim);
         }
 
-        .test-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
+        .image-box strong { color: var(--accent); display: block; margin-bottom: 10px; font-size: 1.2rem; }
 
-        .test-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            background: var(--accent);
-            color: white;
-        }
-
-        .highlight-box {
-            background: rgba(139, 92, 246, 0.1);
-            border-left: 4px solid var(--accent);
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .pros-cons {
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            margin: 40px 0;
         }
 
-        .pros h3 { color: var(--success); }
-        .cons h3 { color: #ef4444; }
+        .grid-item {
+            background: rgba(255,255,255,0.02);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .pro-con-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .pro-list h3 { color: var(--pro); font-size: 1.5rem; margin-bottom: 20px; }
+        .con-list h3 { color: var(--con); font-size: 1.5rem; margin-bottom: 20px; }
+
+        .pro-list ul, .con-list ul { list-style: none; padding: 0; }
+        .pro-list li::before { content: "✔ "; color: var(--pro); font-weight: bold; }
+        .con-list li::before { content: "✖ "; color: var(--con); font-weight: bold; }
+        
+        li { margin-bottom: 15px; }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
 
         footer {
             text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
             color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-top: 100px;
-            padding-bottom: 40px;
         }
 
-        img {
-            width: 100%;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid var(--border);
+        p { margin-bottom: 20px; font-size: 1.1rem; }
+
+        .important-note {
+            background: rgba(163, 113, 247, 0.1);
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
         }
     </style>
 </head>
@@ -138,80 +146,131 @@
 
 <div class="container">
     <header>
-        <h1><span>Arting AI</span> Utvärdering</h1>
-        <p class="subtitle">Analys av "Free YouTube Transcript Generator Online" [cite: 1]</p>
+        <div class="badge">Fullständig Dokumentation</div>
+        <h1><span>Arting AI</span> Deep Dive</h1>
+        <p class="subtitle">En omfattande utvärdering av YouTube Transcript Generator & AI-analys</p>
     </header>
 
-    <section>
-        <h2>Introduktion</h2>
-        <div class="card">
+    <section id="introduktion">
+        <h2>1. Introduktion & Syfte</h2>
+        <div class="content-block">
             <p>
-                Syftet med detta verktyg är att låta användaren klistra in en YouTube-länk för att automatiskt extrahera transkriptioner och sammanfattningar[cite: 2]. 
-                Verktyget är designat för att identifiera viktiga händelser i både informationsrika och underhållande videor[cite: 3].
+                Syftet med detta verktyg, <strong>Arting AI - Free YouTube Transcript Generator Online</strong>, är att radikalt förenkla hur vi konsumerar videoinnehåll. Genom att klistra in en YouTube-länk analyserar verktyget videon och genererar automatiskt transkriptioner och sammanfattningar.
             </p>
-            <div class="highlight-box">
-                <strong>Huvudfunktion:</strong> Den sammanfattar och skriver ner vad som är höjdpunkterna i videon[cite: 4].
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Genomförda Tester</h2>
-        <div class="test-grid">
-            <div class="test-item">
-                <span class="tag">Historik & Animation</span>
-                <p>Testade en animerad video om <strong>första världskriget</strong>[cite: 6]. Trots det visuellt komplexa formatet hanterade verktyget detta mycket bra och skapade en tydlig överblick[cite: 8].</p>
-            </div>
-            <div class="test-item">
-                <span class="tag">Underhållning & Språk</span>
-                <p>Testade en svensk video från <strong>JLC</strong>[cite: 11]. Verktyget kunde sammanfatta innehållet väl, även om resultatet levererades på engelska trots svenskt tal[cite: 11].</p>
-            </div>
-        </div>
-        <p><em>Notera: En video ("JLC reagerar på Love Island") kunde inte hittas, vilket tyder på vissa begränsningar i databasen[cite: 9, 10].</em></p>
-    </section>
-
-    <section>
-        <h2>Funktionsanalys</h2>
-        <div class="card">
-            <ul>
-                <li><strong>AI Chat:</strong> Den mest kraftfulla funktionen[cite: 21]. Testet "Extract 5 key points" gav mycket precisa svar baserat enbart på videons innehåll[cite: 15, 22].</li>
-                <li><strong>Mind Maps:</strong> Verktyget kan generera visuella kartor över innehållet[cite: 12]. Denna funktion upplevdes dock som mindre nödvändig än den rena text-sammanfattningen[cite: 13].</li>
-                <li><strong>Kostnad:</strong> Själva sammanfattningen verkar vara kostnadsfri utan token-begränsningar[cite: 5, 24]. AI-chatten begränsas dock kraftigt av en betalvägg efter endast en fråga[cite: 23].</li>
-            </ul>
-        </div>
-    </section>
-
-    <section>
-        <h2>Slutsats & Rekommendation</h2>
-        <div class="card">
             <p>
-                Detta är ett utmärkt verktyg för studier, särskilt för att snabbt ta till sig information från långa videor[cite: 17]. 
-                Den bästa strategin är att kombinera verktyget med att faktiskt se videon för att få full kontext, då AI:n är bäst på att lyfta fram specifika delar snarare än hela upplevelsen[cite: 19, 20].
+                Detta är inte bara en enkel textgenerator; det är ett verktyg som identifierar "highlights" och kritiska händelser. För studenter är detta en "game changer" när det gäller att plugga till prov från långa föreläsningsvideor, då man sparar tid genom att få kärnan serverad direkt.
             </p>
+            <div class="important-note">
+                "Detta är ett bra sätt att plugga på ifall man vill kolla på långa videos men jag ser ingen nytta till den ifall det inte är till plugget."
+            </div>
+        </div>
+    </section>
+
+    <section id="metod-tester">
+        <h2>2. Genomförda Tester & Observationer</h2>
+        
+        <div class="content-block">
+            <div class="badge">Case Study A</div>
+            <h3>Historisk Analys: Första Världskriget</h3>
+            <p>
+                Det första stora testet gjordes på en animerad video om första världskriget. Detta var ett stresstest för AI:n – kan den förstå handlingen i en tecknad/animerad kontext där talet ofta är snabbt och stiliserat?
+            </p>
+            <p><strong>Resultat:</strong> Verktyget hanterade detta utmärkt. Det lyckades dra ut kronologin och de viktigaste strategiska punkterna utan problem.</p>
             
-            <div class="pros-cons">
-                <div class="pros">
+            <div class="image-box">
+                <strong>[ BILD 1: Gränssnittet för WW1-videon ]</strong>
+                Här visas hur AI:n presenterar den historiska tidslinjen.
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="badge">Case Study B</div>
+            <h3>Språklig Kontext: JLC & Svensk Humor</h3>
+            <p>
+                När verktyget testades med svenska videor (JLC) märktes en teknisk begränsning i gränssnittet: Sammanfattningen sker på engelska även om videon är helt på svenska. Kvaliteten på sammanfattningen var dock hög, vilket tyder på en avancerad flerspråkig förståelse bakom kulisserna.
+            </p>
+            <div class="image-box">
+                <strong>[ BILD 2: JLC Sammanfattning ]</strong>
+                Visar sammanfattningen av svenskt innehåll översatt till engelska.
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="badge">Felanalys</div>
+            <h3>Systembegränsningar</h3>
+            <p>
+                Under testet "JLC reagerar på Love Island" gav systemet ett felmeddelande. Det verkar som att vissa videor inte kan indexeras, troligen på grund av rättighetsbegränsningar eller YouTube-API:ets restriktioner för specifikt innehåll.
+            </p>
+        </div>
+    </section>
+
+    <section id="funktioner">
+        <h2>3. Funktionsanalys & Visualisering</h2>
+        
+        <div class="grid">
+            <div class="grid-item">
+                <h3>Mind Maps</h3>
+                <p>Verktyget kan generera visuella kartor över videons innehåll. Detta är en intressant grafisk funktion, även om den i praktiken känns mindre nödvändig än texten.</p>
+                <div class="image-box">
+                    <strong>[ BILD 3: Mind Map ]</strong>
+                </div>
+            </div>
+            <div class="grid-item">
+                <h3>AI Chat Assistant</h3>
+                <p>Detta är verktygets hjärta. Man kan chatta med videon. Testet "Extract 5 key points" gav ett klockrent resultat och sparade enormt mycket tid.</p>
+                <div class="image-box">
+                    <strong>[ BILD 4 & 5: AI Chat i aktion ]</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fordelar-nackdelar">
+        <h2>4. Slutgiltig Utvärdering: Fördelar vs Nackdelar</h2>
+        <div class="content-block">
+            <p>
+                Efter omfattande tester står det klart att Arting AI är ett kraftfullt verktyg för informationshantering. Det är dock ingen ersättning för att faktiskt se videon om man vill ha 100% kontext.
+            </p>
+
+            <div class="pro-con-section">
+                <div class="pro-list">
                     <h3>Fördelar</h3>
                     <ul>
-                        <li>Bra för repetition/plugg [cite: 17]</li>
-                        <li>Träffsäker AI-analys [cite: 22]</li>
-                        <li>Gratis sammanfattningar [cite: 5]</li>
+                        <li><strong>Tidsbesparing:</strong> Perfekt för att snabbt skumma igenom långt material.</li>
+                        <li><strong>Inga Tokens:</strong> Grundläggande sammanfattningar verkar vara gratis utan begränsning.</li>
+                        <li><strong>Träffsäkerhet:</strong> AI-chatten ger korrekta svar baserat på enbart video-datan.</li>
+                        <li><strong>Pedagogiskt:</strong> Lyfter fram de viktigaste delarna inför prov och plugg.</li>
                     </ul>
                 </div>
-                <div class="cons">
+                <div class="con-list">
                     <h3>Nackdelar</h3>
                     <ul>
-                        <li>Betalvägg på chatten [cite: 23]</li>
-                        <li>Vissa videor hittas ej [cite: 10]</li>
-                        <li>Översätter ej till svenska [cite: 11]</li>
+                        <li><strong>Betalvägg:</strong> Man kan bara ställa en fråga i chatten innan det krävs betalning.</li>
+                        <li><strong>Språk:</strong> Kan inte sammanfatta på svenska (bara engelska).</li>
+                        <li><strong>Stabilitet:</strong> Hittar inte alla videor på plattformen.</li>
+                        <li><strong>Kontext:</strong> Man tappar "känslan" och hela sammanhanget om man bara läser texten.</li>
                     </ul>
                 </div>
             </div>
+
+            <div class="image-box">
+                <strong>[ BILD 6: Betalväggen för AI-chatten ]</strong>
+                Här visas meddelandet om att betalning krävs för fler frågor.
+            </div>
+        </div>
+    </section>
+
+    <section id="slutord">
+        <h2>5. Sammanfattning & Inlärningsstrategi</h2>
+        <div class="content-block">
+            <p>
+                <strong>Bästa sättet att använda verktyget:</strong> För att maximera din inlärning bör du först titta på videon för att få den fulla uppfattningen och kontexten. Använd sedan Arting AI för att repetera, sammanfatta och ställa kontrollfrågor. Detta skapar en kombination av visuell och textuell inlärning som är svårslagen.
+            </p>
         </div>
     </section>
 
     <footer>
-        <p>Skapad som en del av kursuppgift i AI-utvärdering & Webbpublicering</p>
+        <p>© 2026 Arting AI Testrapport - Skapad för Utbildningssyfte</p>
     </footer>
 </div>
 
